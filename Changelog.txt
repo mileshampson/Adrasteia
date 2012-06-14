@@ -1,0 +1,83 @@
+Revision History:
+ -Version 0.3.3 (current)
+        - Changed p-value display format to scientific notation
+        - Improved display format for header information
+        - Updated Readme.txt
+
+ -Version 0.3.2
+        - Added a cut-off variable contolling the p-values of
+          the results displayed to the user.
+        - Changed the order of index creation so that everything
+          is written to disk before an attempt is made to load
+          indices (in case of failure).
+          
+ -Version 0.3.1
+        -Resolved the occasional crashing on index creation bug
+        -Improved the performance testing in the Measurment module
+        -Fixed the error checking for the correct query length
+        
+    -Version 0.3.0
+        -Implemented group matching feature
+        -Added more detailed information to readme
+        -Added more cases to testsuite and demonstration
+    
+    -Version 0.3.0 RC1
+        -Implemented proper partition matching (as in agrep) for scws 
+        -Allows seperate error rates for each query in a batch
+        -Index data is now written to disk, so that only one
+         indexing session needs to be done for a database even
+         if the program is restarted.
+         
+    -Version 0.2.0
+        -Implemented better checking of input data.
+        -Included a Test Suite.
+        
+    -Version 0.2 RC2
+        - Fixed bug where the lagrepy module of agrepy crashed
+          on 64 bit architectures.
+          
+    -Version 0.2 RC1
+        -Implemented multiple query matching for both direct and
+         preprocessed matches.
+        -Removed dependencies on Numeric libraries, and slow
+         recursive function for combinations
+         
+    -Version 0.11
+        -Changed directory structure slightly to fix compile errors
+        -Fixed legal information
+        -Removed table of means from calculation of p-values
+        
+    -Version 0.1.0
+        - Implemented p-values and sorting of results
+        - Now returns information about area near match
+        - Switch to direct match for potentially slow matches
+        
+    -Version 0.09
+        - Allowed specification of some more command line args
+        - Implemented basic scoring of results
+        
+    -Version 0.08
+        - Changed dropset calculation to return next matching result
+        - Rewrote init to parse every possible triplet of each record,
+          so that there was less computation to be done in match
+    
+    -Version 0.05
+        - Wrote recursive function to calculate all possible permutations
+          of errors in the sequence partition, thus greatly reducing the
+          dropset, at the cost of a very slow match calculation for high
+          error rates
+          
+----------------------------------------------------------------------------          
+TODO:  
+    Bugs:
+        (major) -The lagrepy module of agrepy does not work on 64 bit platforms.
+                 At the moment a test is done to see if we are running on one
+                 of these platforms, and if so then use the sagrepy module for
+                 all queries. As this becomes inefficent for queries above length
+                 30, sagrepy should be rewritten to run on these architectures.
+                -The output is in the wrong format when the p value threshold
+		 reduces the result set to zero
+    Features:
+        (major) - Implement parsers for databases other than FASTA
+                - Remove false drops for multiple matches
+                - Use table of standard deviations as well as table of means
